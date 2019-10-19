@@ -138,13 +138,13 @@ public class USStates {
         for(int i = 0; i < 5; i++){
 
             System.out.println("Please enter the name of a US state to retrieve its capitol, " +
-                    "typing 'fin' to enter input: ");
+                    "typing 'enter' to enter input: ");
             Scanner scan = new Scanner(System.in);
             String userInput = "";
 
             // parse user input for key, convert to all-caps;
             String receivedToken = scan.next();
-            while(!receivedToken.equals("fin")){
+            while(receivedToken.equals("enter")){
                 userInput += receivedToken.toUpperCase();
                 receivedToken = scan.next();
             }
