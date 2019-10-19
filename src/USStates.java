@@ -129,6 +129,16 @@ public class USStates {
             stateCapitol.put(usaStates[n][0].toUpperCase(),usaStates[n][1].toUpperCase());
         }
 
+        // set up Scanner object to parse user input;
+        Scanner scan = new Scanner(System.in);
+
+        /*
+         declare/initialize empty arraylist to store return values, that the results may all be
+         re-displayed at the conclusion of user input;
+         - state and its corresponding capitol are stored side-by-side;
+        */
+        ArrayList<String> outputArr = new ArrayList<>();
+
         /*
          prompt end-user for input in the form of a US state 5 times;
 
@@ -139,12 +149,11 @@ public class USStates {
 
             System.out.println("Please enter the name of a US state to retrieve its capitol, " +
                     "typing 'enter' to enter input: ");
-            Scanner scan = new Scanner(System.in);
             String userInput = "";
 
             // parse user input for key, convert to all-caps;
             String receivedToken = scan.next();
-            while(receivedToken.equals("enter")){
+            while(!receivedToken.equals("enter")){
                 userInput += receivedToken.toUpperCase();
                 receivedToken = scan.next();
             }
@@ -154,8 +163,22 @@ public class USStates {
              state and its corresponding capitol city;
             */
             if(stateCapitol.containsKey(userInput)){
+
+                // add our state and capitol to the final output arraylist;
+                outputArr.add(userInput);
+                outputArr.add(stateCapitol.get(userInput));
+
+                // display current user input, per assignment specs;
                 System.out.println("State: " + userInput + "  Capitol: " + stateCapitol.get(userInput));
             }
+        }
+
+        // pretty-print all the states and their respective capitols that the user entered;
+        for(int i = 0; i < 10; i =+ 2){
+            System.out.println("State: " + outputArr.get(i) + ", Capitol: " + outputArr.get(i + 1));
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------");
+            System.out.println();
         }
     }
 }
