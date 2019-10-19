@@ -150,12 +150,14 @@ public class USStates {
             System.out.println("Please enter the name of a US state to retrieve its capitol, " +
                     "typing 'enter' to enter input: ");
             String userInput = "";
-
+            String receivedToken = "";
             // parse user input for key, convert to all-caps;
-            String receivedToken = scan.next();
-            while(!receivedToken.equals("enter")){
-                userInput += receivedToken.toUpperCase();
+            while(scan.hasNext()){
                 receivedToken = scan.next();
+                while(!receivedToken.equals("enter")) {
+                    userInput += receivedToken.toUpperCase();
+                    receivedToken = scan.next();
+                }
             }
 
             /*
@@ -173,12 +175,12 @@ public class USStates {
             }
         }
 
-        // pretty-print all the states and their respective capitols that the user entered;
-        for(int i = 0; i < 10; i =+ 2){
-            System.out.println("State: " + outputArr.get(i) + ", Capitol: " + outputArr.get(i + 1));
-            System.out.println();
-            System.out.println("-------------------------------------------------------------------");
-            System.out.println();
-        }
+//        // pretty-print all the states and their respective capitols that the user entered;
+//        for(int i = 0; i < 12; i += 2){
+//            System.out.println("State: " + outputArr.get(i) + ", Capitol: " + outputArr.get(i + 1));
+//            System.out.println();
+//            System.out.println("-------------------------------------------------------------------");
+//            System.out.println();
+//        }
     }
 }
