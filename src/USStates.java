@@ -156,61 +156,39 @@ public class USStates {
               - temp var receivedToken is for storing input tokens before passing them to
                 userInput;
             */
-            // One-time initial assignment, each iteration (i.e. new state entered);
-            String userInput = "";     // userIn = ""
-            String receivedToken = scan.next();   // recTke = "New"
 
-            while(!receivedToken.equals("enter")) {
-                userInput += receivedToken.toUpperCase() + " ";
-                System.out.println(userInput);
-                /*
-                 if stateCapitol contains the state user enters, print
-                 state and its corresponding capitol city;
-                */
-                if (stateCapitol.containsKey(userInput.trim())) {
+            try {
+                // One-time initial assignment, each iteration (i.e. new state entered);
+                String userInput = "";     // userIn = ""
+                String receivedToken = scan.next();   // recTke = "New"
 
-                    // create 2 variables to make explicit the use of HashMap methods;
-                    String state = userInput;
-                    String capitol = stateCapitol.get(userInput.trim());
-                    System.out.println(capitol);
-                    // format 2-word state names;
-//                    switch (userInput) {
-//                        case "NEWYORK":
-//                            state = "New York";
-//                            break;
-//                        case "NEWHAMPSHIRE":
-//                            state = "New Hampshire";
-//                            break;
-//                        case "RHODEISLAND":
-//                            state = "Rhode Island";
-//                            break;
-//                        case "NORTHDAKOTA":
-//                            state = "North Dakota";
-//                            break;
-//                        case "SOUTHDAKOTA":
-//                            state = "South Dakota";
-//                            break;
-//                        case "NEWMEXICO":
-//                            state = "New Mexico";
-//                            break;
-//                        case "WESTVIRGINIA":
-//                            state = "West Virginia";
-//                            break;
-//                    }
+                while (!receivedToken.equals("enter")) {
+                    userInput += receivedToken.toUpperCase() + " ";
+                    /*
+                     if stateCapitol contains the state user enters, print
+                     state and its corresponding capitol city;
+                    */
+                    if (stateCapitol.containsKey(userInput.trim())) {
 
-                    // add our state and capitol to the final output arraylist;
-                    outputArr.add(state);
-                    outputArr.add(capitol);
-                    // display current user input, per assignment specs;
-                    System.out.println("State: " + state + "  Capitol: " + capitol);
-                }
-                // reset receivedToken;
-                receivedToken = scan.next();
+                        // create 2 variables to make explicit the use of HashMap methods;
+                        String state = userInput;
+                        String capitol = stateCapitol.get(userInput.trim());
+
+                        // add our state and capitol to the final output arraylist;
+                        outputArr.add(state);
+                        outputArr.add(capitol);
+                        // display current user input, per assignment specs;
+                        System.out.println("State: " + state + "  Capitol: " + capitol);
+                    }
+                    // reset receivedToken;
+                    receivedToken = scan.next();
+                    }
+            }catch(IllegalArgumentException e){
+                throw new IllegalArgumentException("No such state.");
             }
         }
 
-
-        // counter var to number the printed state-capitol output;
+            // counter var to number the printed state-capitol output;
         int count = 1;
         // pretty-print all the states and their respective capitols that the user entered;
         for(int i = 0; i < outputArr.size(); i += 2) {
