@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.IntStream;
 
 /*
  *@author Vita Wiebe
@@ -79,7 +80,7 @@ public class USStates {
         usaStates[29][1] = "Trenton";
         usaStates[30][0] = "NewMexico";
         usaStates[30][1] = "Santa Fe";
-        usaStates[31][0] = "New York";
+        usaStates[31][0] = "NewYork";
         usaStates[31][1] = "Albany";
         usaStates[32][0] = "NorthCarolina";
         usaStates[32][1] = "Raleigh";
@@ -156,15 +157,12 @@ public class USStates {
                 userInput;
             */
             // One-time initial assignment, each iteration (i.e. new state entered);
-            String userInput = " ";     // userIn = "New"
+            String userInput = "";     // userIn = "New"
             String receivedToken = scan.next();   // recTke = "New"
 
             while(!receivedToken.equals("enter")) {
-                // recTke != "enter"
-                userInput += receivedToken.toUpperCase();  // userIn now = "New "/= "New York "
-//                userInput += " ";
-                receivedToken = scan.next();  // recTke = "York"/recTke = "enter"
-
+                userInput += receivedToken.toUpperCase();
+                receivedToken = scan.next();
 
                 /*
                  if stateCapitol contains the state user enters, print
@@ -172,22 +170,51 @@ public class USStates {
                 */
                 if (stateCapitol.containsKey(userInput)) {
 
+                    // create 2 variables to make explicit the use of HashMap methods;
+                    String state = userInput;
+                    String capitol = stateCapitol.get(userInput);
+                    // format 2-word state names;
+                    switch (userInput) {
+                        case "NEWYORK":
+                            state = "New York";
+                            break;
+                        case "NEWHAMPSHIRE":
+                            state = "New Hampshire";
+                            break;
+                        case "RHODEISLAND":
+                            state = "Rhode Island";
+                            break;
+                        case "NORHDAKOTA":
+                            state = "North Dakota";
+                            break;
+                        case "SOUTHDAKOTA":
+                            state = "South Dakota";
+                            break;
+                        case "NEWMEXICO":
+                            state = "New Mexico";
+                            break;
+                        case "WESTVIRGINIA":
+                            state = "West Virginia";
+                            break;
+                    }
+
                     // add our state and capitol to the final output arraylist;
-                    outputArr.add(userInput);
-                    outputArr.add(stateCapitol.get(userInput));
-                    System.out.println("Is this thing even on?");
+                    outputArr.add(state);
+                    outputArr.add(capitol);
                     // display current user input, per assignment specs;
-                    System.out.println("State: " + userInput + "  Capitol: " + stateCapitol.get(userInput));
+                    System.out.println("State: " + state + "  Capitol: " + capitol);
                 }
             }
         }
 
 //        // pretty-print all the states and their respective capitols that the user entered;
-//        for(int i = 0; i < 12; i += 2){
-//            System.out.println("State: " + outputArr.get(i) + ", Capitol: " + outputArr.get(i + 1));
-//            System.out.println();
-//            System.out.println("-------------------------------------------------------------------");
-//            System.out.println();
-//        }
+        for(int i = 0; i < outputArr.size(); i += 2){
+            System.out.println();
+            System.out.println("#################################################################");
+            System.out.println("State: " + outputArr.get(i) + ", Capitol: " + outputArr.get(i + 1));
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------");
+            System.out.println();
+        }
     }
 }
