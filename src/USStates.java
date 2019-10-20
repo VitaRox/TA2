@@ -74,17 +74,17 @@ public class USStates {
         usaStates[26][1] = "Lincoln";
         usaStates[27][0] = "Nevada";
         usaStates[27][1] = "Carson City";
-        usaStates[28][0] = "NewHampshire";
+        usaStates[28][0] = "New Hampshire";
         usaStates[28][1] = "Concord";
-        usaStates[29][0] = "NewJersey";
+        usaStates[29][0] = "New Jersey";
         usaStates[29][1] = "Trenton";
-        usaStates[30][0] = "NewMexico";
+        usaStates[30][0] = "New Mexico";
         usaStates[30][1] = "Santa Fe";
-        usaStates[31][0] = "NewYork";
+        usaStates[31][0] = "New York";
         usaStates[31][1] = "Albany";
-        usaStates[32][0] = "NorthCarolina";
+        usaStates[32][0] = "North Carolina";
         usaStates[32][1] = "Raleigh";
-        usaStates[33][0] = "NorthDakota";
+        usaStates[33][0] = "North Dakota";
         usaStates[33][1] = "Bismarck";
         usaStates[34][0] = "Ohio";
         usaStates[34][1] = "Columbus";
@@ -94,11 +94,11 @@ public class USStates {
         usaStates[36][1] = "Salem";
         usaStates[37][0] = "Pennsylvania";
         usaStates[37][1] = "Harrisburg";
-        usaStates[38][0] = "RhodeIsland";
+        usaStates[38][0] = "Rhode Island";
         usaStates[38][1] = "Providence";
-        usaStates[39][0] = "SouthCarolina";
+        usaStates[39][0] = "South Carolina";
         usaStates[39][1] = "Columbia";
-        usaStates[40][0] = "SouthDakota";
+        usaStates[40][0] = "South Dakota";
         usaStates[40][1] = "Pierre";
         usaStates[41][0] = "Tennessee";
         usaStates[41][1] = "Nashville";
@@ -112,7 +112,7 @@ public class USStates {
         usaStates[45][1] = "Richmond";
         usaStates[46][0] = "Washington";
         usaStates[46][1] = "Olympia";
-        usaStates[47][0] = "WestVirginia";
+        usaStates[47][0] = "West Virginia";
         usaStates[47][1] = "Charleston";
         usaStates[48][0] = "Wisconsin";
         usaStates[48][1] = "Madison";
@@ -126,7 +126,7 @@ public class USStates {
         HashMap<String,String> stateCapitol = new HashMap<>();
 
         // loop through 2D array, putting said values into HashMap in Key-Value pairs;
-        for(int n = 0; n < usaStates.length - 1; n++){
+        for(int n = 0; n < usaStates.length; n++){
             stateCapitol.put(usaStates[n][0].toUpperCase(),usaStates[n][1].toUpperCase());
         }
 
@@ -157,46 +157,46 @@ public class USStates {
                 userInput;
             */
             // One-time initial assignment, each iteration (i.e. new state entered);
-            String userInput = "";     // userIn = "New"
+            String userInput = "";     // userIn = ""
             String receivedToken = scan.next();   // recTke = "New"
 
             while(!receivedToken.equals("enter")) {
-                userInput += receivedToken.toUpperCase();
-                receivedToken = scan.next();
-
+                userInput += receivedToken.toUpperCase() + " ";
+                System.out.println(userInput);
                 /*
                  if stateCapitol contains the state user enters, print
                  state and its corresponding capitol city;
                 */
-                if (stateCapitol.containsKey(userInput)) {
+                if (stateCapitol.containsKey(userInput.trim())) {
 
                     // create 2 variables to make explicit the use of HashMap methods;
                     String state = userInput;
-                    String capitol = stateCapitol.get(userInput);
+                    String capitol = stateCapitol.get(userInput.trim());
+                    System.out.println(capitol);
                     // format 2-word state names;
-                    switch (userInput) {
-                        case "NEWYORK":
-                            state = "New York";
-                            break;
-                        case "NEWHAMPSHIRE":
-                            state = "New Hampshire";
-                            break;
-                        case "RHODEISLAND":
-                            state = "Rhode Island";
-                            break;
-                        case "NORTHDAKOTA":
-                            state = "North Dakota";
-                            break;
-                        case "SOUTHDAKOTA":
-                            state = "South Dakota";
-                            break;
-                        case "NEWMEXICO":
-                            state = "New Mexico";
-                            break;
-                        case "WESTVIRGINIA":
-                            state = "West Virginia";
-                            break;
-                    }
+//                    switch (userInput) {
+//                        case "NEWYORK":
+//                            state = "New York";
+//                            break;
+//                        case "NEWHAMPSHIRE":
+//                            state = "New Hampshire";
+//                            break;
+//                        case "RHODEISLAND":
+//                            state = "Rhode Island";
+//                            break;
+//                        case "NORTHDAKOTA":
+//                            state = "North Dakota";
+//                            break;
+//                        case "SOUTHDAKOTA":
+//                            state = "South Dakota";
+//                            break;
+//                        case "NEWMEXICO":
+//                            state = "New Mexico";
+//                            break;
+//                        case "WESTVIRGINIA":
+//                            state = "West Virginia";
+//                            break;
+//                    }
 
                     // add our state and capitol to the final output arraylist;
                     outputArr.add(state);
@@ -204,13 +204,16 @@ public class USStates {
                     // display current user input, per assignment specs;
                     System.out.println("State: " + state + "  Capitol: " + capitol);
                 }
+                // reset receivedToken;
+                receivedToken = scan.next();
             }
         }
+
 
         // counter var to number the printed state-capitol output;
         int count = 1;
         // pretty-print all the states and their respective capitols that the user entered;
-        for(int i = 0; i < outputArr.size(); i += 2){
+        for(int i = 0; i < outputArr.size(); i += 2) {
             System.out.println();
             System.out.println(count + ".");
             System.out.println("#################################################################");
