@@ -141,12 +141,11 @@ public class USStates {
         ArrayList<String> outputArr = new ArrayList<>();
 
         /*
-         prompt end-user for input in the form of a US state 5 times;
-
-         convert this output to all-caps and print out the state and its corresponding
+         * prompt end-user for input in the form of a US state 5 times;
+         * convert this output to all-caps and print out the state and its corresponding
          capitol city;
         */
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 5; i++) {
 
             System.out.println("Please enter the name of a US state to retrieve its capitol, " +
                     "typing 'enter' to enter input: ");
@@ -157,34 +156,35 @@ public class USStates {
                 userInput;
             */
 
-            try {
-                // One-time initial assignment, each iteration (i.e. new state entered);
-                String userInput = "";     // userIn = ""
-                String receivedToken = scan.next();   // recTke = "New"
 
-                while (!receivedToken.equals("enter")) {
-                    userInput += receivedToken.toUpperCase() + " ";
-                    /*
-                     if stateCapitol contains the state user enters, print
-                     state and its corresponding capitol city;
-                    */
-                    if (stateCapitol.containsKey(userInput.trim())) {
+            // One-time initial assignment, each iteration (i.e. new state entered);
+            String userInput = "";     // userIn = ""
+            String receivedToken = scan.next();   // recTke = "New"
 
-                        // create 2 variables to make explicit the use of HashMap methods;
-                        String state = userInput;
-                        String capitol = stateCapitol.get(userInput.trim());
+            while (!receivedToken.equals("enter")) {
+                userInput += receivedToken.toUpperCase() + " ";
+                /*
+                 if stateCapitol contains the state user enters, print
+                 state and its corresponding capitol city;
+                */
+                if (stateCapitol.containsKey(userInput.trim())) {
 
-                        // add our state and capitol to the final output arraylist;
-                        outputArr.add(state);
-                        outputArr.add(capitol);
-                        // display current user input, per assignment specs;
-                        System.out.println("State: " + state + "  Capitol: " + capitol);
-                    }
-                    // reset receivedToken;
-                    receivedToken = scan.next();
-                    }
-            }catch(IllegalArgumentException e){
-                throw new IllegalArgumentException("No such state.");
+                    // create 2 variables to make explicit the use of HashMap methods;
+                    String state = userInput;
+                    String capitol = stateCapitol.get(userInput.trim());
+
+                    // add our state and capitol to the final output arraylist;
+                    outputArr.add(state);
+                    outputArr.add(capitol);
+                    // display current user input, per assignment specs;
+                    System.out.println("State: " + state + "  Capitol: " + capitol);
+                }
+                // reset receivedToken;
+                receivedToken = scan.next();
+            }
+            // check for instances of invalid user input (misspellings, fake states, etc.);
+            if(!stateCapitol.containsKey(userInput.trim())){
+                System.out.println("No such state.");
             }
         }
 
