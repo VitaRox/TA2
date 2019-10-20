@@ -184,7 +184,7 @@ public class USStates {
                         case "RHODEISLAND":
                             state = "Rhode Island";
                             break;
-                        case "NORHDAKOTA":
+                        case "NORTHDAKOTA":
                             state = "North Dakota";
                             break;
                         case "SOUTHDAKOTA":
@@ -207,14 +207,18 @@ public class USStates {
             }
         }
 
-//        // pretty-print all the states and their respective capitols that the user entered;
+        // counter var to number the printed state-capitol output;
+        int count = 1;
+        // pretty-print all the states and their respective capitols that the user entered;
         for(int i = 0; i < outputArr.size(); i += 2){
             System.out.println();
+            System.out.println(count + ".");
             System.out.println("#################################################################");
             System.out.println("State: " + outputArr.get(i) + ", Capitol: " + outputArr.get(i + 1));
             System.out.println();
             System.out.println("-------------------------------------------------------------------");
             System.out.println();
+            count++;
         }
     }
 }
