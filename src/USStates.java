@@ -19,7 +19,7 @@ public class USStates {
         */
         usaStates[0][0] = "Alabama";
         usaStates[0][1] = "Montgomery";
-        usaStates[1][0] =  "Alaska";
+        usaStates[1][0] = "Alaska";
         usaStates[1][1] = "Juneau";
         usaStates[2][0] = "Arizona";
         usaStates[2][1] = "Phoenix";
@@ -73,17 +73,17 @@ public class USStates {
         usaStates[26][1] = "Lincoln";
         usaStates[27][0] = "Nevada";
         usaStates[27][1] = "Carson City";
-        usaStates[28][0] = "New Hampshire";
+        usaStates[28][0] = "NewHampshire";
         usaStates[28][1] = "Concord";
-        usaStates[29][0] = "New Jersey";
+        usaStates[29][0] = "NewJersey";
         usaStates[29][1] = "Trenton";
-        usaStates[30][0] = "New Mexico";
+        usaStates[30][0] = "NewMexico";
         usaStates[30][1] = "Santa Fe";
         usaStates[31][0] = "New York";
         usaStates[31][1] = "Albany";
-        usaStates[32][0] = "North Carolina";
+        usaStates[32][0] = "NorthCarolina";
         usaStates[32][1] = "Raleigh";
-        usaStates[33][0] = "North Dakota";
+        usaStates[33][0] = "NorthDakota";
         usaStates[33][1] = "Bismarck";
         usaStates[34][0] = "Ohio";
         usaStates[34][1] = "Columbus";
@@ -93,11 +93,11 @@ public class USStates {
         usaStates[36][1] = "Salem";
         usaStates[37][0] = "Pennsylvania";
         usaStates[37][1] = "Harrisburg";
-        usaStates[38][0] = "Rhode Island";
+        usaStates[38][0] = "RhodeIsland";
         usaStates[38][1] = "Providence";
-        usaStates[39][0] = "South Carolina";
+        usaStates[39][0] = "SouthCarolina";
         usaStates[39][1] = "Columbia";
-        usaStates[40][0] = "South Dakota";
+        usaStates[40][0] = "SouthDakota";
         usaStates[40][1] = "Pierre";
         usaStates[41][0] = "Tennessee";
         usaStates[41][1] = "Nashville";
@@ -111,7 +111,7 @@ public class USStates {
         usaStates[45][1] = "Richmond";
         usaStates[46][0] = "Washington";
         usaStates[46][1] = "Olympia";
-        usaStates[47][0] = "West Virginia";
+        usaStates[47][0] = "WestVirginia";
         usaStates[47][1] = "Charleston";
         usaStates[48][0] = "Wisconsin";
         usaStates[48][1] = "Madison";
@@ -149,28 +149,36 @@ public class USStates {
 
             System.out.println("Please enter the name of a US state to retrieve its capitol, " +
                     "typing 'enter' to enter input: ");
-            String userInput = "";
-            //String receivedToken = "";
-            // parse user input for key, convert to all-caps;
-            userInput = scan.next();
-            while(!userInput.equals("enter")) {
-                userInput += userInput.toUpperCase();
-                userInput = scan.next();
-            }
-
 
             /*
-             if stateCapitol contains the state user enters, print
-             state and its corresponding capitol city;
+              - parse user input for key, convert to all-caps;
+              - temp var receivedToken is for storing input tokens before passing them to
+                userInput;
             */
-            if(stateCapitol.containsKey(userInput)){
+            // One-time initial assignment, each iteration (i.e. new state entered);
+            String userInput = " ";     // userIn = "New"
+            String receivedToken = scan.next();   // recTke = "New"
 
-                // add our state and capitol to the final output arraylist;
-                outputArr.add(userInput);
-                outputArr.add(stateCapitol.get(userInput));
+            while(!receivedToken.equals("enter")) {
+                // recTke != "enter"
+                userInput += receivedToken.toUpperCase();  // userIn now = "New "/= "New York "
+//                userInput += " ";
+                receivedToken = scan.next();  // recTke = "York"/recTke = "enter"
 
-                // display current user input, per assignment specs;
-                System.out.println("State: " + userInput + "  Capitol: " + stateCapitol.get(userInput));
+
+                /*
+                 if stateCapitol contains the state user enters, print
+                 state and its corresponding capitol city;
+                */
+                if (stateCapitol.containsKey(userInput)) {
+
+                    // add our state and capitol to the final output arraylist;
+                    outputArr.add(userInput);
+                    outputArr.add(stateCapitol.get(userInput));
+                    System.out.println("Is this thing even on?");
+                    // display current user input, per assignment specs;
+                    System.out.println("State: " + userInput + "  Capitol: " + stateCapitol.get(userInput));
+                }
             }
         }
 
