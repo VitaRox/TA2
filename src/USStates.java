@@ -150,15 +150,14 @@ public class USStates {
             System.out.println("Please enter the name of a US state to retrieve its capitol, " +
                     "typing 'enter' to enter input: ");
             String userInput = "";
-            String receivedToken = "";
+            //String receivedToken = "";
             // parse user input for key, convert to all-caps;
-            while(scan.hasNext()){
-                receivedToken = scan.next();
-                while(!receivedToken.equals("enter")) {
-                    userInput += receivedToken.toUpperCase();
-                    receivedToken = scan.next();
-                }
+            userInput = scan.next();
+            while(!userInput.equals("enter")) {
+                userInput += userInput.toUpperCase();
+                userInput = scan.next();
             }
+
 
             /*
              if stateCapitol contains the state user enters, print
